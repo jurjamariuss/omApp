@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="omApp">
+  <head>
+    <title>Om App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  </head>
+  <body>
+    
+    
+    <div class="container" ng-controller="mainController">
+      
+      <!--<video id="preview"></video>-->
+      <div ng-show="!teamSelect">
+        <label for="Select"> Selecteaza echipa </label><br>
+        <select name="Select" ng-model="teamSelect" ng-change="seeTeam()">
+          <option value="rosu">rosu</option>
+          <option value="albastru">albastru</option>
+          <option value="proiector">proiector</option>
+        </select>
+      </div>
+      
+      <div class='red-team' ng-show="teamSelect == 'rosu'">
+        <h3>Interbare echipa rosie</h3>
+        <p ng-show="scanContent.length > 0">Raspuns: {{ scanContent }}</p>
+        <button ng-click="scanContent = ''">Next</button>
+      </div>
+      
+      <div class='red-team' ng-show='teamSelect == "albastru"'>
+        <h3>Interbare echipa albastra</h3>
+        <p ng-show="scanContent.length > 0">Raspuns: {{ scanContent }}</p>
+        <button ng-click="scanContent = ''">Next</button>
+      </div>
+      
+      <div class='red-team' ng-show='teamSelect == "proiector"'>
+        <h3>Proiectr</h3>
+      </div>
+      
+       <video id="preview" ng-show="teamSelect !='proiector' && scanContent.length == 0"></video>
+
+    </div>
+    
+    
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/instascan.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
