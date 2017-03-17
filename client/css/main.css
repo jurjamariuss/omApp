@@ -1,0 +1,57 @@
+.team-select {
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.team-select label {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.team-select select {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .team {
+      text-align: center;
+  }
+  
+  #preview {
+      display: block;
+      width: 400px;
+      margin: 0 auto;
+  }
+
+.info-mess {
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    opacity: 1;
+    animation : dispari 3s linear;
+    }
+    
+
+    
+    @keyframes dispari {
+    0%,80%   {opacity: 1 ;}
+    100%   {opacity: 1 ;}
+    
+}
+
+.proiector {
+    display: flex;
+}
+
+.p-red-team {
+    border-right: 5px solid pink;
+    flex-grow:1;
+}
+.p-blue-team {
+    flex-grow:1;
+}

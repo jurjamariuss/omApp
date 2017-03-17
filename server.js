@@ -16,14 +16,11 @@ router.use(express.static(path.resolve(__dirname, 'client')));
 
 io.on('connection', function (socket) {
   
-  socket.on('teamScan',function(){
-    socket.broadcast.emit('someTeam',socket.team);
-  })
-  
-  socket.on('teamSelected',function(team){
-    socket.team = team;
+  socket.on('show answer',function(team,que,ans){
+    socket.broadcast.emit('proiector',team,que,ans);
     
   })
+  
   
   
   

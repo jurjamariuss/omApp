@@ -5,39 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
     
     
-    <div class="container" ng-controller="mainController">
+    <div ng-cloak class="container" ng-controller="mainController">
       
       <!--<video id="preview"></video>-->
-      <div ng-show="!teamSelect">
+      <div class="team-select "ng-show="!team">
         <label for="Select"> Selecteaza echipa </label><br>
-        <select name="Select" ng-model="teamSelect" ng-change="seeTeam()">
+        <select name="Select" ng-model="team" ng-change="handleSelection()">
           <option value="rosu">rosu</option>
           <option value="albastru">albastru</option>
           <option value="proiector">proiector</option>
         </select>
       </div>
       
-      <div class='red-team' ng-show="teamSelect == 'rosu'">
-        <h3>Interbare echipa rosie</h3>
-        <p ng-show="scanContent.length > 0">Raspuns: {{ scanContent }}</p>
-        <button ng-click="scanContent = ''">Next</button>
+      <div class='team' ng-show="team == 'rosu'">
+        <h3> {{  ques.text }} </h3>
+        <h3 ng-show="answ"> {{ answ }} </h3>
+        <p class="info-mess"> {{ infoMess }}</p>
+        <!--<button ng-show="showNextB" ng-click="nextAction()">Next</button>-->
       </div>
       
-      <div class='red-team' ng-show='teamSelect == "albastru"'>
-        <h3>Interbare echipa albastra</h3>
-        <p ng-show="scanContent.length > 0">Raspuns: {{ scanContent }}</p>
-        <button ng-click="scanContent = ''">Next</button>
+      <div class='team' ng-show='team == "albastru"'>
+        <h3>{{ ques.text }}</h3>
+        <p ng-show="answ">Raspuns: {{ answ }}</p>
+        <p class="info-mess"> {{infoMess }}</p>
+        <!--<button ng-show="showNextB" ng-click="nextAction()">Next</button>-->
       </div>
       
-      <div class='red-team' ng-show='teamSelect == "proiector"'>
-        <h3>Proiectr</h3>
+      <div class='proiector' ng-show='team == "proiector"'>
+        
+        <div class="p-red-team">
+          <h3 class="text-center">Echipa Rosie</h3>
+          <h3> {{  redTeamPro.que }} </h3>
+          <h3> {{  redTeamPro.ans }} </h3>
+          <p class="info-mess"> {{ infoMess }}</p>
+        </div>
+        
+         <div class="p-blue-team">
+          <h3 class="text-center">Echipa Albastra</h3>
+          <h3> {{  blueTeamPro.que }} </h3>
+          <h3> {{  blueTeamPro.ans }} </h3>
+          <p class="info-mess"> {{ infoMess }}</p>
+        </div>
+        
       </div>
       
-       <video id="preview" ng-show="teamSelect !='proiector' && scanContent.length == 0"></video>
+       <video id="preview" ng-show="showCamera"></video>
 
     </div>
     
